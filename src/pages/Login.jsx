@@ -13,8 +13,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  const handleSubmit = async () => {
     if (loading) return
     setError(null)
     setLoading(true)
@@ -28,6 +27,10 @@ export default function Login() {
     }
   }
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') handleSubmit()
+  }
+
   return (
     <div className="p-4">
       <div className="flex justify-center mb-4">
@@ -37,12 +40,12 @@ export default function Login() {
         <h1 className="text-2xl font-bold">Welcome back</h1>
         <p className="text-sm text-slate-500">Sign in to your DANAKU account</p>
       </div>
-      <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-sm p-4">
-        <Input label="Email or Username" type="text" value={identifier} onChange={(e) => setIdentifier(e.target.value)} />
-        <Input label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      <div className="bg-white rounded-2xl shadow-sm p-4">
+        <Input label="Email or Username" type="text" value={identifier} onChange={(e) => setIdentifier(e.target.value)} onKeyDown={handleKeyDown} autoComplete="off" />
+        <Input label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} onKeyDown={handleKeyDown} autoComplete="new-password" />
         {error && <div className="text-sm text-red-600 mb-2">{error}</div>}
-        <Button loading={loading}>Sign in</Button>
-      </form>
+        <Button loading={loading} onClick={handleSubmit}>Sign in</Button>
+      </div>
       <div className="mt-3 text-center text-sm">
         <Link to="/forgot-password" className="text-slate-600 hover:underline">Forgot password?</Link>
       </div>

@@ -3,6 +3,7 @@ import api from '../api/axios'
 import BalanceCard from '../components/wallet/BalanceCard'
 import TopupForm from '../components/wallet/TopupForm'
 import TransferForm from '../components/wallet/TransferForm'
+import WithdrawForm from '../components/wallet/WithdrawForm'
 import TransactionList from '../components/wallet/TransactionList'
 import { Link } from 'react-router-dom'
 import PromoBanner from '../components/ui/PromoBanner'
@@ -111,6 +112,11 @@ export default function Dashboard() {
         <div className="bg-white rounded-2xl shadow-sm p-4">
           <h3 className="text-sm md:text-base font-semibold mb-2">Transfer</h3>
           <TransferForm onSuccess={fetchData} />
+        </div>
+
+        <div className="bg-white rounded-2xl shadow-sm p-4">
+          <h3 className="text-sm md:text-base font-semibold mb-2">Tarik ke Bank</h3>
+          <WithdrawForm onSuccess={fetchData} />
         </div>
 
         <div className="md:col-span-2">

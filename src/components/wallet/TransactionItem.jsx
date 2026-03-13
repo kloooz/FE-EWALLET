@@ -7,7 +7,7 @@ export default function TransactionItem({ item }) {
   const amountRaw = parseFloat(String(item?.amount || '0')) || 0;
   const amount = Math.abs(amountRaw);
 
-  const isOutgoing = typeStr === 'transfer_out' || typeStr.includes('payment');
+  const isOutgoing = typeStr === 'transfer_out' || typeStr.includes('payment') || typeStr === 'withdrawal';
   const incoming = !isOutgoing && (typeStr.includes('topup') || typeStr === 'transfer_in' || amountRaw > 0);
 
   const dateLabel = item?.created_at ? new Date(item.created_at).toLocaleString() : '';

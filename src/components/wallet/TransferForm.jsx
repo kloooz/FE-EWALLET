@@ -56,7 +56,7 @@ export default function TransferForm({ onSuccess }) {
     <>
       {error && <div className="mb-3 p-3 bg-red-50 text-red-600 rounded text-sm">{error}</div>}
       <form onSubmit={handleInitialSubmit} className="mt-4">
-        <Input label="Recipient username or email" value={to} onChange={(e) => setTo(e.target.value)} placeholder="janedoe" error={fieldErrors.identifier ? fieldErrors.identifier[0] : null} />
+        <Input label="Recipient username or email" value={to} onChange={(e) => setTo(e.target.value)} placeholder="username" error={fieldErrors.identifier ? fieldErrors.identifier[0] : null} />
         <Input label="Amount" type="number" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="100000" error={fieldErrors.amount && fieldErrors.amount[0]} />
         <Button loading={loading}>Send</Button>
       </form>
